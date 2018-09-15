@@ -13,7 +13,7 @@ db.once('open', function() {
 var Schema = mongoose.Schema;
 
 var orderSchema = new Schema({
-    _id: ObjectId
+    _id: Schema.Types.ObjectId,
     id: Number,
     lat: Number,
     lng: Number,
@@ -32,8 +32,8 @@ var orderSchema = new Schema({
         cashless: Boolean,
         exclusive: Boolean
     } 
-}, {collection:"Order"});
+}, {collection:"orders"});
 
-var Order = mongoose.model('Order', orderSchema);
+var Orders = mongoose.model('Orders', orderSchema);
 
-export default Order
+module.exports = Orders;
