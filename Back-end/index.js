@@ -19,8 +19,9 @@ app.get('/storekeeper/', function(req, res) {
             res.send(err);
 
         pool.query('select * from storekeepers limit 5', (err, sk) => {
-            res.json(orders);
-            console.log(err, sk);
+            console.log("SQL\n", err, sk);
+            res.json(sk.row);
+            
             pool.end();
         })
         
