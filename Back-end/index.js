@@ -4,4 +4,27 @@ var pool = require('./pg');
 
 var app = express();
 
-app.listen(4000, () => console.log('Now browse to localhost:4000/graphql'));
+app.get('/orders/', function(req, res) {
+    Order.find(function(err, orders) {
+        if (err)
+            res.send(err);
+
+        res.json(orders);
+    });
+});
+
+app.get('/storekeeper/', function(req, res) {
+    Order.find(function(err, orders) {
+        if (err)
+            res.send(err);
+
+        pool.query('select * from storekeepers limit 5', (err, sk) => {
+            res.json(orders);
+            console.log(err, sk);
+            pool.end();
+        })
+        
+    });
+});
+
+app.listen(4000, () => console.log('Now browse to localhost:4000'));
