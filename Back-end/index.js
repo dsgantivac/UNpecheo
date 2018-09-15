@@ -2,7 +2,7 @@ var express = require('express');
 var graphqlHTTP = require('express-graphql');
 var { buildSchema } = require('graphql');
 
-var Order = require('/mongo.js');
+var Order = require('./mongo');
 
 var schema = buildSchema(`
   type Query {
@@ -10,11 +10,21 @@ var schema = buildSchema(`
   }
 `);
 
+
+
+
 var root = { hello: () => {
-    Order.findOne({},function (err, order) {
-        console.log(order);
-        return order.type;
-    })
+    var o;
+    Order.findOne({id:8779887},function (err, order) {
+        if(err){
+            console.log(err);
+            return;
+        }
+        o = order;
+    });
+    console.log(o);
+    
+    return o;
 } };
 
 var app = express();
