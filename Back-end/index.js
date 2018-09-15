@@ -1,36 +1,31 @@
 var express = require('express');
-var graphqlHTTP = require('express-graphql');
-var { buildSchema } = require('graphql');
-
 var Order = require('./mongo');
-
-var schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
-
-
-
-
-var root = { hello: () => {
-    var o;
-    Order.findOne({id:8779887},function (err, order) {
-        if(err){
-            console.log(err);
-            return;
-        }
-        o = order;
-    });
-    console.log(o);
-    
-    return o;
-} };
+var pool = require('./pg');
 
 var app = express();
-app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue: root,
-  graphiql: true,
-}));
-app.listen(4000, () => console.log('Now browse to localhost:4000/graphql'));
+
+app.get('/orders/', function(req, res) {
+    Order.find(function(err, orders) {
+        if (err)
+            res.send(err);
+
+        res.json(orders);
+    });
+});
+
+app.get('/storekeeper/', function(req, res) {
+    Order.find(function(err, orders) {
+        if (err)
+            res.send(err);
+
+        pool.query('select * from storekeepers limit 5', (err, sk) => {
+            console.log("SQL\n", err, sk);
+            res.json(sk.row);
+            
+            pool.end();
+        })
+        
+    }); 
+});
+
+app.listen(4000, () => console.log('Now browse to localhost:4000'));
