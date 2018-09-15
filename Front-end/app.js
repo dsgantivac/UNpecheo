@@ -11,14 +11,14 @@ function getGeotext(){
     var input = document.getElementById("geohash-input").value;
 console.log
   $.ajax({
-    url:'https://maps.googleapis.com/maps/api/geocode/json?address='+input+',NY',
+    url:'https://maps.googleapis.com/maps/api/geocode/json?address='+input+',Colombia',
     dataType: 'json'
     }).done(function(obj){
      // console.log("data"+i,datus);
       if(obj.status=="OK"){  
-        console.log("obj ",obj);
+        //console.log("obj ",obj);
         point = ({"lat": parseFloat(obj.results[0].geometry.location.lat), "lng": parseFloat(obj.results[0].geometry.location.lng)});
-       // console.log("lalpoint ",point)            
+        console.log("lalpoint ",point)            
       }
     });
 }
