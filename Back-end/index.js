@@ -24,7 +24,7 @@ app.get('/storekeeper/', function(req, res) {
             pool.end();
         })
         
-    });
+    }); 
 });
 
 app.listen(4000, () => console.log('Now browse to localhost:4000'));
