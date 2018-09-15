@@ -6,6 +6,7 @@ var init_coord=[4.624335,-74.063644]
 test data
 */
 
+
 /*----*/
 function getGeotext(){
     var input = document.getElementById("geohash-input").value;
