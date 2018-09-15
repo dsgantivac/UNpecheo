@@ -9,18 +9,23 @@ test data
 /*----*/
 function getGeotext(){
     var input = document.getElementById("geohash-input").value;
-console.log
-  $.ajax({
-    url:'https://maps.googleapis.com/maps/api/geocode/json?address='+input+',Colombia',
-    dataType: 'json'
-    }).done(function(obj){
-     // console.log("data"+i,datus);
-      if(obj.status=="OK"){  
-        //console.log("obj ",obj);
-        point = ({"lat": parseFloat(obj.results[0].geometry.location.lat), "lng": parseFloat(obj.results[0].geometry.location.lng)});
-        console.log("lalpoint ",point)            
-      }
-    });
+    console.log
+    $.ajax({
+      url:'https://maps.googleapis.com/maps/api/geocode/json?address='+input+',Colombia',
+      dataType: 'json'
+      }).done(function(obj){
+       // console.log("data"+i,datus);
+        if(obj.status=="OK"){  
+          //console.log("obj ",obj);
+          //console.log("latlon",[obj.results[0].geometry.location.lat,obj.results[0].geometry.location.lng])
+          point = ({"lat": parseFloat(obj.results[0].geometry.location.lat), "lng": parseFloat(obj.results[0].geometry.location.lng)});
+          //console.log("point ",point)            
+          init_coord=[obj.results[0].geometry.location.lat,obj.results[0].geometry.location.lng]
+        
+          console.log("coord",init_coord)
+          run();
+        }
+      });
 }
 /*
 Map plot
@@ -30,7 +35,7 @@ function myMap() {
         
     map = new google.maps.Map(document.getElementById("googleMap"),{
         center:centermap,
-        zoom:14
+        zoom:12
     });
     
     //Traffic layer 
