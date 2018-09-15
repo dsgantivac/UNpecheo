@@ -21,18 +21,9 @@
         <ul id="menu-content" class="menu-content collapse out">
             <li>
                 <a href="#">
-                    <i class="fa fa-dashboard fa-lg"></i> Filtros
+                    <i class="fa fa-dashboard fa-lg"></i> FILTROS
                 </a>
             </li>
-            <li data-toggle="collapse" data-target="#products" class="collapsed active">
-                <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
-            </li>
-            <ul class="sub-menu collapse" id="products">
-                <li class="active"><a href="#">CSS3 Animation</a></li>
-                <li><a href="#">General</a></li>
-                <li><a href="#">Buttons</a></li>
-                <li><a href="#">Tabs &amp; Accordions</a></li>
-            </ul>
 
             <li data-toggle="collapse" data-target="#geohash" class="collapsed">
                 <a href="#"><i class="fa fa-globe fa-lg"></i> Geohash <span class="arrow"></span></a>
@@ -47,17 +38,33 @@
                 </div>
             </ul>
 
+            <li data-toggle="collapse" data-target="#products" class="collapsed active">
+                <a href="#"><i class="fa fa-gift fa-lg"></i> Tipo de orden <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse" id="products">
+                <li class="active"><a href="#"></a></li>
+                <li><a href="#">Restaurante</a></li>
+                <li><a href="#">Mercados</a></li>
+                <li><a href="#">Rappicash</a></li>
+                <li><a href="#">Rappiventaja</a></li>
+                <li><a href="#">Antojo</a></li>
+            </ul>
+            
             <li data-toggle="collapse" data-target="#new" class="collapsed">
-                <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
+                <a href="#"><i class="fa fa-car fa-lg"></i> Tipo de vehiculo <span class="arrow"></span></a>
             </li>
             <ul class="sub-menu collapse" id="new">
-                <li>New New 1</li>
-                <li>New New 2</li>
-                <li>New New 3</li>
+                <li>Bici</li>
+                <li>Moto</li>
             </ul>
             <li>
                 <a href="#">
-                    <i class="fa fa-user fa-lg"></i> Profile
+                    <i class="fa fa-user fa-lg"></i> 
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                      <label class="btn btn-secondary active">
+                        <button type="checkbox" checked autocomplete="on" id="trafico-chk" onclick="toggleTrafico()"> Trafico
+                      </label>
+                    </div>
                 </a>
             </li>
             <li>
