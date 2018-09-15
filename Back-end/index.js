@@ -3,6 +3,7 @@ var graphqlHTTP = require('express-graphql');
 var { buildSchema } = require('graphql');
 
 var Order = require('./mongo');
+var pool = require('./pg');
 
 var schema = buildSchema(`
   type Query {
@@ -10,12 +11,9 @@ var schema = buildSchema(`
   }
 `);
 
-
-
-
 var root = { hello: () => {
     var o;
-    Order.findOne({id:8779887},function (err, order) {
+    await Order.findOne({id:8779887}).then(function (err, order) {
         if(err){
             console.log(err);
             return;
@@ -23,7 +21,6 @@ var root = { hello: () => {
         o = order;
     });
     console.log(o);
-    
     return o;
 } };
 

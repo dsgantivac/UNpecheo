@@ -4,12 +4,12 @@ var GraphQLID = require('graphql').GraphQLID;
 var GraphQLString = require('graphql').GraphQLString;
 var GraphQLInt = requie('graphql').GraphQLInt;
 
-// User Type
-exports.userType = new GraphQLObjectType({
-  name: 'user',
+var ToolKit = requie('./toolkit');
+
+module.exports = new GraphQLObjectType({
+  name: 'order',
   fields: function () {
     return {
-        
       id: {
         type: GraphQLInt
       },
@@ -27,6 +27,9 @@ exports.userType = new GraphQLObjectType({
       },
       created_at:{
         type: GraphQLString
+      },
+      toolkit: {
+        type: new GraphQLList(ToolKit)
       }
       
 /*
@@ -42,6 +45,6 @@ exports.userType = new GraphQLObjectType({
         vehicle: Number,
         cashless: Boolean,
         exclusive: Boolean*/
-    };
+    };  
   }
 });
