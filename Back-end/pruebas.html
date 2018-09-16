@@ -27,11 +27,17 @@
       return "pails"
     }
    }
+   var orders = []
    $.getJSON("jsons/orders.json", function (data) {
     $.each(data, function (index, value) {
-       console.log(value);
+        console.log(value);
+       //console.log("lat ",value.lat,"lng",value.lng, "id",value.id);
+       //orders.push(value);
+
     });
   });
+
+  console.log("orders size",orders.length);
 
   var a = [1,2,3];
   var b = [1,2,3];

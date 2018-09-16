@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@turf/boolean-contains": "^6.0.1",
     "apollo-server-express": "^2.0.7",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
