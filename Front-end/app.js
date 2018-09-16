@@ -19,6 +19,32 @@ var orders = [[10,4.61574,-74.20326,1.2],[12,4.61129,-74.20008,1.5],[12,4.617629
 
 
 /*----*/
+function getInfo(){
+  var url = 'https://datoseltiempo.carto.com/api/v2/sql?q=select%20*%20from%20datoseltiempo.localidades_bogota'
+  var data = $.get(url, () => {
+    console.log( url );
+  })  
+  .done(function () {
+    console.log("dataloc:",data);
+    var resp = data.responseJSON;
+    console.log("resp",resp.rows);
+  })
+  .fail(function (error) {
+    console.error(error);
+  })
+/*  var url = 'http://10.105.168.90:4000/storekeeper/2018-09-10_22:00:00/2018-09-10_22:30:00'
+  var data = $.get(url, () => {
+    console.log( url );
+  })  
+  .done(function () {
+    console.log("dataart:",data);
+    var resp = data.responseJSON.data;   
+  })
+  .fail(function (error) {
+    console.error(error);
+  })*/
+}
+
 function getGeotext(){
     var input = document.getElementById("geohash-input").value;
     console.log
@@ -101,9 +127,8 @@ function myMap() {
     }
     //Barrios Bogotá
     if (barrios_chk){
-  //    addBarrios()
+      addBarrios()
     }
-    addLocalidades()
     //Marcadores
     addMarkersOrder()
     addMarkersRT()
@@ -139,33 +164,6 @@ function addBarrios(){
     });
 }
 
-function addLocalidades(){
-    map.data.loadGeoJson(
-      'https://gist.githubusercontent.com/jupaneira/a02af9ac03957aed15939ef72bfecfd2/raw/a75ede89adabff65c739268fb8d61137169b5691/bta_localidades.json');
-
-    map.data.setStyle(function(feature) {
-      var color = 'blue';
-      if (feature.getProperty('isColorful')) {
-        color = feature.getProperty('color');
-      }
-      return ({
-        fillColor: color,
-        strokeColor: color,
-        strokeWeight: 1
-      });
-    });
-    /*
-    var infolocalidades = new google.maps.InfoWindow();
-
-    map.data.addListener('click', function(event) {
-      var barrio_name = event.feature.getProperty("scanombre");
-      var geo = event.feature.getGeometry()
-      infolocalidades.setContent("<div style='width:150px; text-align: center;'>Barrio: "+barrio_name+"</div>");
-      infolocalidades.setPosition(event.latLng)
-      infolocalidades.setOptions({pixelOffset: new google.maps.Size(0,-30)});
-      infolocalidades.open(map);
-    });*/
-}
 function addMarker(marker,image,listMarkers){  //Params: Information, icon image, markers location, saturation
     var category = 'order category';
     var title = 'order';
@@ -246,6 +244,7 @@ function addMarkersRT(){
 /*-----*/
 window.onload = function(){
   run();
+  getInfo();
 }
 function run(){
   myMap();
