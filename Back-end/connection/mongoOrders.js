@@ -4,7 +4,6 @@ mongoose.connect("mongodb://hackathonmongo:hackathon2018rappimongodb@mongo-hacka
 
 var db = mongoose.connection;
 
-
 db.on('error', ()=> {console.log( '---FAILED to connect to mongoose')})
 db.once('open', function() {
         console.log("Mongo connected");
