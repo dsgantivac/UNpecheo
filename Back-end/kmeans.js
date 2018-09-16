@@ -35,8 +35,6 @@ function kmeans(oreders, rapitenderos){
   //el numero de centroides y listas debe ser el mismo
   centroides = [[-2.64,1.58],[1.6,0.94],[1.36,-1.44],[-0.74,0.36],[-1.38,-1.22],[-2.76,-1.66],[-2.86,0.66],[0.96,1.56]];
   var data = [];
-  /*
-  */
   //se crea un arreglo de arreglos de tamno del total de rapitenderos
   for (var i = 0; i < rapitenderos.length; i++) {
     data.push([]);
@@ -49,3 +47,22 @@ function kmeans(oreders, rapitenderos){
   var a = closestCentroid([0,0,0],centroides);
   return a;
 }
+
+
+function mapPoints(points){
+  var arr = []
+  for (var i = 0; i < points.length; i++) {
+    arr.push(new google.maps.LatLng(points[i][0], points[i][1]));
+
+  }
+  return arr;
+
+}
+
+
+
+
+
+
+
+/**/
