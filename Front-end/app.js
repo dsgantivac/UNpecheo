@@ -22,13 +22,30 @@ var orders = []
 function getInfoord(){
   //var URL = 'http://10.105.168.90:4000/storekeeper/2018-09-10_22:00:00/2018-09-10_22:30:00'
 
-  $.getJSON( "orders.json", function( json ) {
-    console.log( json);
-    for (i = 0; i < json.length; i++) {
-      order = json[i]
-      orders.push([order.id,order.lat,order.lng,2])
+  $.getJSON( "OrdersByType.json", function( json ) {
+    console.log("courie", json.courier);
+    for (i = 0; i < json.courier.length; i++) {
+      order = json.courier[i]
+      console.log("cour",json.courier[i])
+      orders.push([order.id,order.lat,order.lng,order.toolkit.storekeeper_level*0.5,"courier"])
+    }  
+    for (i = 0; i < json.express.length; i++) {
+      order = json.express[i]
+      orders.push([order.id,order.lat,order.lng,order.toolkit.storekeeper_level*0.5,"express"])
     }
-    console.log(orders)
+    for (i = 0; i < json.market.length; i++) {
+      order = json.market[i]
+      orders.push([order.id,order.lat,order.lng,order.toolkit.storekeeper_level*0.5,"market"])
+    }  
+    for (i = 0; i < json.restaurant.length; i++) {
+      order = json.restaurant[i]
+      orders.push([order.id,order.lat,order.lng,order.toolkit.storekeeper_level*0.5,"restaurant"])
+    }
+    for (i = 0; i < json.whim.length; i++) {
+      order = json.whim[i]
+      orders.push([order.id,order.lat,order.lng,order.toolkit.storekeeper_level*0.5,"whim"])
+    }
+    console.log('orders',orders)
     addMarkersOrder()
   });
 }
