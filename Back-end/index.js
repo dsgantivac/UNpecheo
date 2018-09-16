@@ -5,12 +5,14 @@ var pool = require('./pg');
 var app = express();
 
 app.get('/orders/', function(req, res) {
-    Order.find(function(err, orders) {
-        if (err)
-            res.send(err);
+    Order.find()
+        .limit(10)
+        .exec(function(err, orders) {
+            if (err)
+                res.send(err);
 
-        res.json(orders);
-    });
+            res.json(orders);
+        });
 });
 
 app.get('/storekeeper/', function(req, res) {
