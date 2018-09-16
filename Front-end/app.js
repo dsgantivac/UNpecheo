@@ -35,9 +35,9 @@ function getInfoord(){
 function getInfort(){
   $.getJSON( "storekeeper.json", function( json ) {
     console.log( json);
-    for (i = 0; i < 50; i++) {
+    for (i = 0; i < 300; i++) {
       rt = json[i]
-      rapitenderos.push([rt.storekeepeer_id,rt.id,parseFloat(rt.lat),parseFloat(rt.lng),2])
+      rapitenderos.push([rt.id,parseFloat(rt.lat),parseFloat(rt.lng),rt.toolkit.storekeeper_level*0.5,rt.toolkit.vehicle])
     }
     console.log("rts",rapitenderos)
     addMarkersRT()
@@ -222,7 +222,7 @@ function addMarker(marker,image,listMarkers){  //Params: Information, icon image
       fillOpacity: 0.4,
       map: map,
       center: pos,
-      radius: sat*250,
+      radius: sat*400,
       title: title
     });
     
@@ -255,6 +255,7 @@ function addMarkersOrder(){
 }
 
 function addMarkersRT(){
+  console.log("rapimark",rapitenderos)
     for (i = 0; i < orders.length; i++) {
       addMarker(rapitenderos[i], rt_icon , rtmarkers)
     }
