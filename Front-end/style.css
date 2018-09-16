@@ -1,6 +1,6 @@
 #googleMap{
     width:100%;
-    height:600px;
+    height:700px;
 }
 
 /**/
@@ -33,7 +33,7 @@
   margin: 0px;
   line-height: 35px;
   cursor: pointer;
-  /*    
+  /*
     .collapsed{
        .arrow:before{
                  font-family: FontAwesome;

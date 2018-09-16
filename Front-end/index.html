@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="./Resources/favicon.ico" />
+
       <!-- Custom css -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <title> Rappi UNpecheo </title>
@@ -28,7 +29,7 @@
             <li data-toggle="collapse" data-target="#geohash" class="collapsed">
                 <a href="#"><i class="fa fa-globe fa-lg"></i> Geohash <span class="arrow"></span></a>
             </li>
-            
+
             <ul class="sub-menu collapse" id="geohash">
                 <div class="input-group">
                   <input type="text" class="form-control" id="geohash-input" placeholder="Ingresa ubicación...">
@@ -49,7 +50,7 @@
                 <li><a href="#">Rappiventaja</a></li>
                 <li><a href="#">Antojo</a></li>
             </ul>
-            
+
             <li data-toggle="collapse" data-target="#new" class="collapsed">
                 <a href="#"><i class="fa fa-car fa-lg"></i> Tipo de vehiculo <span class="arrow"></span></a>
             </li>
@@ -59,7 +60,7 @@
             </ul>
             <li>
                 <a href="#">
-                    <i class="fa fa-user fa-lg"></i> 
+                    <i class="fa fa-user fa-lg"></i>
                     <div class="btn-group-toggle" data-toggle="buttons">
                       <label class="btn btn-secondary active">
                         <input type="checkbox" checked autocomplete="on" id="trafico-chk" onclick="toggleTrafico()"> Trafico
@@ -77,19 +78,18 @@
 </div>
 <div class="container" id="main">
     <div class="row">
-        <div class="col-md-12">
+
             <div id="googleMap"></div>
-        </div>
     </div>
 </div>
 <!-- -->
 
-    
+
     <!-- Google maps API-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYZYRqUwPRnxKQ6cBp81DIq1w-MamF24U&libraries=geometry&libraries=places" async defer></script>
-    
+
      <!-- custom script -->
-    <script type="text/javascript" src="app.js"></script> 
+    <script type="text/javascript" src="app.js"></script>
 
 </body>
 </html>
