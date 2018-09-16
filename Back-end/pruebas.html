@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script type="text/javascript" src="script.js"></script>
   <script type="text/javascript" src="kmeans.js"></script>
-
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 
@@ -13,6 +12,7 @@
 
 <p id = "demo2"></p>
 <p id="demo"></p>
+<div class="mypanel"></div>
 
 <script>
 
@@ -28,8 +28,20 @@
     }
    }
 
+
+     $.getJSON('http://localhost:4000/orders', function(data) {
+
+         var text = `Toolkit: ${data[0]}`
+
+                    console.log(text);
+
+         $(".mypanel").html(text);
+     });
+
+
   //document.getElementById("demo2").innerHTML = window.myFunction(10);
-  document.getElementById("demo").innerHTML = window.kmeans(v1,v2);
+  //document.getElementById("demo").innerHTML = window.kmeans(v1,v2);
+
 </script>
 
 </body>

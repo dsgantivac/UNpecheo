@@ -17,10 +17,10 @@ function getGeotext(){
       dataType: 'json'
       }).done(function(obj){
        // console.log("data"+i,datus);
-        if(obj.status=="OK"){  
+        if(obj.status=="OK"){
           //console.log("obj ",obj);
           point = ({"lat": parseFloat(obj.results[0].geometry.location.lat), "lng": parseFloat(obj.results[0].geometry.location.lng)});
-          //console.log("point ",point)            
+          //console.log("point ",point)
           init_coord=[obj.results[0].geometry.location.lat,obj.results[0].geometry.location.lng]
           console.log("coord",init_coord)
           run();
@@ -45,18 +45,26 @@ Map plot
 */
 function myMap() {
     var centermap = new google.maps.LatLng(init_coord[0],init_coord[1]);
-        
+    var myLatLng = {lat: init_coord[0], lng: init_coord[1]};
+
     map = new google.maps.Map(document.getElementById("googleMap"),{
         center:centermap,
         zoom:zoom_map
     });
-    
-    //Traffic layer 
+
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Hello World!'
+    });
+
+
+    //Traffic layer
     if (trafico_chk){
       var trafficLayer = new google.maps.TrafficLayer();
       trafficLayer.setMap(map);
     }
-    
+
     map.data.loadGeoJson(
       'https://gist.githubusercontent.com/john-guerra/ee93225ca2c671b3550d62614f4978f3/raw/b1d556c39f3d7b6e495bf26b7fda815765ac110a/bogota_cadastral.json');
 
@@ -82,5 +90,5 @@ function run(){
 }
 
 $(document).ready(function() {
-  //run(); 
+  //run();
 })
