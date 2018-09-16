@@ -101,8 +101,9 @@ function myMap() {
     }
     //Barrios Bogotá
     if (barrios_chk){
-      addBarrios()
+  //    addBarrios()
     }
+    addLocalidades()
     //Marcadores
     addMarkersOrder()
     addMarkersRT()
@@ -138,6 +139,33 @@ function addBarrios(){
     });
 }
 
+function addLocalidades(){
+    map.data.loadGeoJson(
+      'https://gist.githubusercontent.com/jupaneira/a02af9ac03957aed15939ef72bfecfd2/raw/a75ede89adabff65c739268fb8d61137169b5691/bta_localidades.json');
+
+    map.data.setStyle(function(feature) {
+      var color = 'blue';
+      if (feature.getProperty('isColorful')) {
+        color = feature.getProperty('color');
+      }
+      return ({
+        fillColor: color,
+        strokeColor: color,
+        strokeWeight: 1
+      });
+    });
+    /*
+    var infolocalidades = new google.maps.InfoWindow();
+
+    map.data.addListener('click', function(event) {
+      var barrio_name = event.feature.getProperty("scanombre");
+      var geo = event.feature.getGeometry()
+      infolocalidades.setContent("<div style='width:150px; text-align: center;'>Barrio: "+barrio_name+"</div>");
+      infolocalidades.setPosition(event.latLng)
+      infolocalidades.setOptions({pixelOffset: new google.maps.Size(0,-30)});
+      infolocalidades.open(map);
+    });*/
+}
 function addMarker(marker,image,listMarkers){  //Params: Information, icon image, markers location, saturation
     var category = 'order category';
     var title = 'order';
