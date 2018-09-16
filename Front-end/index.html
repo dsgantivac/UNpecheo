@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    
+
       <!-- Custom css -->
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <link rel="stylesheet" type="text/css" href="styles/menu.css">
@@ -20,11 +20,11 @@
         <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
         <div class="menu-list">
             <ul id="menu-content" class="menu-content collapse out">
-    
+
                 <li data-toggle="collapse" data-target="#geohash" class="collapsed">
                     <a href="#"><i class="fa fa-globe fa-lg"></i> Geohash <span class="arrow"></span></a>
                 </li>
-                
+
                 <ul class="sub-menu collapse" id="geohash">
                     <div class="input-group input-div">
                       <input type="text" class="form-control" id="geohash-input" placeholder="Ingresa ubicacion...">
@@ -33,7 +33,7 @@
                       </span>
                     </div>
                 </ul>
-    
+
                 <li data-toggle="collapse" data-target="#ordertype" class="collapsed">
                     <a href="#"><i class="fa fa-gift fa-lg"></i> Tipo de orden <span class="arrow"></span></a>
                 </li>
@@ -45,27 +45,33 @@
                     <li><a href="#" data-val="vent" onClick="getTipoorden(this)">Rappiventaja</a></li>
                     <li><a href="#" data-val="ant" onClick="getTipoorden(this)">Antojo</a></li>
                 </ul>
-                
+
                 <li data-toggle="collapse" data-target="#new" class="collapsed">
                     <a href="#"><i class="fa fa-car fa-lg"></i> Tipo de vehiculo <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="new">
                     <div class="input-div">
                         <select class="form-control menu-itm" id="vehiculo-sel" size="2" onChange="getTipovehiculo()">
-                            <option>Bici</option>
-                            <option>Moto</option>
+                          <a href="#">
+                              <i class="fa fa-user fa-lg"></i>
+                              <input class="btn btn-secondary active" type="checkbox" checked autocomplete="of" id="vehicle-bici" onclick="toggleBici()"> Bici
+                          </a>
+                          <a href="#">
+                              <i class="fa fa-user fa-lg"></i>
+                              <input class="btn btn-secondary active" type="checkbox" checked autocomplete="of" id="vehicle-moto" onclick="toggleMoto()"> Bici
+                          </a>
                         </select>
                     </div>
                 </ul>
                 <li>
                     <a href="#">
-                        <i class="fa fa-user fa-lg"></i> 
+                        <i class="fa fa-user fa-lg"></i>
                         <input class="btn btn-secondary active" type="checkbox" checked autocomplete="of" id="trafico-chk" onclick="toggleTrafico()"> Trafico
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fa fa-users fa-lg"></i> 
+                        <i class="fa fa-users fa-lg"></i>
                         <input class="btn btn-secondary active" type="checkbox" checked autocomplete="of" id="barrios-chk" onclick="toggleBarrios()"> Barrios
                     </a>
                 </li>
@@ -79,11 +85,11 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Google maps API-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYZYRqUwPRnxKQ6cBp81DIq1w-MamF24U&libraries=geometry&libraries=places" async defer></script>
      <!-- custom script -->
-    <script type="text/javascript" src="app.js"></script> 
+    <script type="text/javascript" src="app.js"></script>
 
 </body>
 </html>
