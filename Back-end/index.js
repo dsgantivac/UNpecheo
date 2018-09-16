@@ -7,6 +7,9 @@ var mongo = require('./connection/mongo');
 var app = express();
 var contain = require("@turf/boolean-contains");
 var barrios;
+
+const https = require('https');
+
 https.get('https://gist.githubusercontent.com/john-guerra/ee93225ca2c671b3550d62614f4978f3/raw/b1d556c39f3d7b6e495bf26b7fda815765ac110a/bogota_cadastral.json', (resp) => {
   var data = '';
 
@@ -89,13 +92,20 @@ app.get('/orders/zone/:date/:date2', function(req, res) {
                 
             }
             console.log(orders);
-            
+            var f = barrios.objects.bta_barrios.geometries;
             for(var i=0; i<orders.length; i++){
-                for(var j=0; j<)
-                if(!o[orders[i].type]){
-                    o[orders[i].type] = [];
+                for(var j=0; j<f.length;j++){
+                    if(contain(f[j],{
+                        "type": "Point",
+                        "coordinates": [orders[i].lng, orders[i].lat ]
+                      })){
+                          if(o[j.properties.NOMB_BARR]){
+                            o[j.properties.NOMB_BARR] = []
+                          }
+                          o[j.properties.NOMB_BARR].push(orders[i]) 
+                      }
                 }
-                o[orders[i].type].push(orders[i]);
+                
             }
             res.json(o);
         });
