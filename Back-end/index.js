@@ -5,13 +5,12 @@ var pool = require('./connection/pg');
 var mongo = require('./connection/mongo');
 
 var app = express();
+var contain = require("@turf/boolean-contains");
 
-<<<<<<< HEAD
+
 app.get('/orders/', function(req, res) {
     Order.find()
         .limit(10)
-=======
-var contain = require("@turf/boolean-contains");
 
 app.get('/orders/:date/:date2', function(req, res) {
 
@@ -22,7 +21,6 @@ app.get('/orders/:date/:date2', function(req, res) {
         }   
       }*/)
 //        .limit(10)
->>>>>>> 6a1d707a7025ae1e8a49b14bee3000ed8207d1a4
         .exec(function(err, orders) {
             console.log(err);
             if (err)
@@ -33,6 +31,7 @@ app.get('/orders/:date/:date2', function(req, res) {
             
             orders = orders.filter(function(order){           
                 if( t >= a && t <= d){
+
                     return true;
                 }
                 return false;
