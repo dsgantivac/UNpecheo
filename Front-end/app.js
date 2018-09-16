@@ -61,14 +61,14 @@ function myMap() {
       'https://gist.githubusercontent.com/john-guerra/ee93225ca2c671b3550d62614f4978f3/raw/b1d556c39f3d7b6e495bf26b7fda815765ac110a/bogota_cadastral.json');
 
     map.data.setStyle(function(feature) {
-      var color = 'gray';
+      var color = 'blue';
       if (feature.getProperty('isColorful')) {
         color = feature.getProperty('color');
       }
       return /** @type {!google.maps.Data.StyleOptions} */({
         fillColor: color,
         strokeColor: color,
-        strokeWeight: 2
+        strokeWeight: 1
       });
     });
 }
