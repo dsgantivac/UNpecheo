@@ -27,22 +27,17 @@
       return "pails"
     }
    }
+   $.getJSON("jsons/orders.json", function (data) {
+    $.each(data, function (index, value) {
+       console.log(value);
+    });
+  });
 
-
-     $.getJSON('http://localhost:4000/orders', function(data) {
-
-         var text = `Toolkit: ${data[0]}`
-
-                    console.log(text);
-
-         $(".mypanel").html(text);
-     });
-
-
+  var a = [1,2,3];
+  var b = [1,2,3];
+  document.getElementById("demo2").innerHTML = window.saturation(a,b);
   //document.getElementById("demo2").innerHTML = window.myFunction(10);
   //document.getElementById("demo").innerHTML = window.kmeans(v1,v2);
-
 </script>
-
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 function distance(v1,v2){
     var total = 0;
     for (var i = 0; i < 2; i++) {
@@ -53,9 +52,16 @@ function mapPoints(points){
   var arr = []
   for (var i = 0; i < points.length; i++) {
     arr.push(new google.maps.LatLng(points[i][0], points[i][1]));
-
   }
   return arr;
+}
+
+//los puntos de un barrio, rapitendero y ordenes ahi
+
+function saturation(v1,v2){
+ var a = v1.length;
+ var b = v2.length;
+ return a+b;
 
 }
 

@@ -6,7 +6,7 @@ var app = express();
 
 app.get('/orders/', function(req, res) {
     Order.find()
-//        .limit(10)
+        .limit(10)
         .exec(function(err, orders) {
             if (err)
                 res.send(err);
@@ -24,9 +24,9 @@ app.get('/storekeeper/:date-:date2', function(req, res) {
             }
             console.log("SQL\n", sk);
             res.json(sk);
-            
-            pool.end();  
-    }) 
+
+            pool.end();
+    })
 });
 
 app.post('/zone/', function(req, res) {
@@ -39,9 +39,9 @@ app.post('/zone/', function(req, res) {
             }
             console.log("SQL\n", sk);
             res.json(sk);
-            
-            pool.end();  
-    }) 
+
+            pool.end();
+    })
 });
 
 app.listen(4000, () => console.log('Now browse to localhost:4000'));
