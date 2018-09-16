@@ -39,10 +39,27 @@
                 </li>
                 <ul class="sub-menu collapse" id="ordertype">
                     <!--<li class="active"><a href="#"></a></li>-->
-                    <li><a href="#" data-val="rest" onClick="getTipoorden(this)">Restaurante</a></li>
-                    <li><a href="#" data-val="merc" onClick="getTipoorden(this)">Mercados</a></li>
-                    <li><a href="#" data-val="cash" onClick="getTipoorden(this)">Rappicash</a></li>
-                    <li><a href="#" data-val="vent" onClick="getTipoorden(this)">Rappiventaja</a></li>
+                    <a href="#">
+                        <i class="fa fa-user fa-lg"></i>
+                        <input class="btn btn-secondary active" data-val="rest" type="checkbox" checked autocomplete="of" id="Orden-Restaurante" onclick="getTipoorden(this)"> Restaurante
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-user fa-lg"></i>
+                        <input class="btn btn-secondary active" data-val="merc" type="checkbox" checked autocomplete="of" id="Orden-Mercado" onclick="getTipoorden(this)"> Mercados
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-user fa-lg"></i>
+                        <input class="btn btn-secondary active" data-val="cash" type="checkbox" checked autocomplete="of" id="Orden-Rappicash" onclick="getTipoorden(this)"> Rappicash
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-user fa-lg"></i>
+                        <input class="btn btn-secondary active" data-val="vent" type="checkbox" checked autocomplete="of" id="Orden-Rappiventaja" onclick="getTipoorden(this)"> Rappiventaja
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-user fa-lg"></i>
+                        <input class="btn btn-secondary active" data-val="ant" type="checkbox" checked autocomplete="of" id="Orden-Antojo" onclick="getTipoorden(this)"> Antojo
+                    </a>
+
                     <li><a href="#" data-val="ant" onClick="getTipoorden(this)">Antojo</a></li>
                 </ul>
 
@@ -58,7 +75,7 @@
                           </a>
                           <a href="#">
                               <i class="fa fa-user fa-lg"></i>
-                              <input class="btn btn-secondary active" type="checkbox" checked autocomplete="of" id="vehicle-moto" onclick="toggleMoto()"> Bici
+                              <input class="btn btn-secondary active" type="checkbox" checked autocomplete="of" id="vehicle-moto" onclick="toggleMoto()"> Moto
                           </a>
                         </select>
                     </div>
