@@ -20,29 +20,37 @@ var orders = [[10,4.61574,-74.20326,1.2],[12,4.61129,-74.20008,1.5],[12,4.617629
 
 /*----*/
 function getInfo(){
-  var url = 'https://datoseltiempo.carto.com/api/v2/sql?q=select%20*%20from%20datoseltiempo.localidades_bogota'
-  var data = $.get(url, () => {
-    console.log( url );
-  })  
-  .done(function () {
-    console.log("dataloc:",data);
-    var resp = data.responseJSON;
-    console.log("resp",resp.rows);
+  //var URL = 'http://10.105.168.90:4000/storekeeper/2018-09-10_22:00:00/2018-09-10_22:30:00'
+
+  $.getJSON( "orders.json", function( json ) {
+    console.log( json);
+    for (i = 0; i < json.length; i++) {
+      order = json[i]
+      orders.push([order.id,order.lat,order.lng,2])
+    }
+    console.log(orders)
+  });
+  
+  $.getJSON( "storekeeper.json", function( json ) {
+    console.log( json);
+    for (i = 0; i < 50; i++) {
+      rt = json[i]
+      rapitenderos.push([rt.storekeepeer_id,parseFloat(rt.lat),parseFloat(rt.lng),2])
+    }
+    console.log(rapitenderos)
+  });
+}
+
+function postGeo(geodata){
+var jqxhr = $.post( "", function() {
+  alert( "success" );
+})
+  .done(function() {
+    alert( "second success" );
   })
-  .fail(function (error) {
-    console.error(error);
+  .fail(function() {
+    alert( "error" );
   })
-/*  var url = 'http://10.105.168.90:4000/storekeeper/2018-09-10_22:00:00/2018-09-10_22:30:00'
-  var data = $.get(url, () => {
-    console.log( url );
-  })  
-  .done(function () {
-    console.log("dataart:",data);
-    var resp = data.responseJSON.data;   
-  })
-  .fail(function (error) {
-    console.error(error);
-  })*/
 }
 
 function getGeotext(){
@@ -156,11 +164,22 @@ function addBarrios(){
 
     map.data.addListener('click', function(event) {
       var barrio_name = event.feature.getProperty("scanombre");
-      var geo = event.feature.getGeometry()
+      var geo = event.feature.getGeometry().getType();
+      
+          var bounds=[];
+          event.feature.getGeometry().forEachLatLng(function(path) {
+            bounds.push(path.toJSON());
+          //  console.log(path)
+          });
+          console.log(bounds);
+      
+     
+      console.log("geo",geo)
       infobarrios.setContent("<div style='width:150px; text-align: center;'>Barrio: "+barrio_name+"</div>");
       infobarrios.setPosition(event.latLng)
       infobarrios.setOptions({pixelOffset: new google.maps.Size(0,-30)});
       infobarrios.open(map);
+      
     });
 }
 
@@ -237,9 +256,6 @@ function addMarkersRT(){
       addMarker(rapitenderos[i], rt_icon , rtmarkers)
     }
 }
-
-
-
 
 /*-----*/
 window.onload = function(){
