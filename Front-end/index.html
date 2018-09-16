@@ -11,12 +11,34 @@
       <!-- Custom css -->
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <link rel="stylesheet" type="text/css" href="styles/menu.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title> Rappi UNpecheo </title>
 </head>
+<style type="text/css">
+    body{
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    a{
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        padding-left: 5px;
+        font-size:18px;
+    }
+    .top-title{
+        background-color:white;
+        color: black;
+        font-family: 'Roboto';
+        font-size:18px;
+        padding: 5px;
+    }
+    
+</style>
 <body>
 <!-- -->
     <div class="nav-side-menu">
-        <div class="brand">Rappi APP </div>
+        <div class="w3-center top-title">Rappi APP </div>
         <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
         <div class="menu-list">
             <ul id="menu-content" class="menu-content collapse out">
@@ -43,22 +65,30 @@
                         <i class="fa fa-user fa-lg"></i>
                         <input class="btn btn-secondary active" data-val="rest" type="checkbox" checked autocomplete="of" id="Orden-Restaurante" onclick="getTipoorden(this)"> Restaurante
                     </a>
+                    </br>
                     <a href="#">
                         <i class="fa fa-user fa-lg"></i>
                         <input class="btn btn-secondary active" data-val="merc" type="checkbox" checked autocomplete="of" id="Orden-Mercado" onclick="getTipoorden(this)"> Mercados
                     </a>
+                    </br>
                     <a href="#">
                         <i class="fa fa-user fa-lg"></i>
                         <input class="btn btn-secondary active" data-val="cash" type="checkbox" checked autocomplete="of" id="Orden-Rappicash" onclick="getTipoorden(this)"> Rappicash
                     </a>
+                    </br>
+                    
                     <a href="#">
                         <i class="fa fa-user fa-lg"></i>
                         <input class="btn btn-secondary active" data-val="vent" type="checkbox" checked autocomplete="of" id="Orden-Rappiventaja" onclick="getTipoorden(this)"> Rappiventaja
                     </a>
+                    </br>
+                    
                     <a href="#">
                         <i class="fa fa-user fa-lg"></i>
                         <input class="btn btn-secondary active" data-val="ant" type="checkbox" checked autocomplete="of" id="Orden-Antojo" onclick="getTipoorden(this)"> Antojo
                     </a>
+                    </br>
+                    
 
                     <li><a href="#" data-val="ant" onClick="getTipoorden(this)">Antojo</a></li>
                 </ul>
@@ -68,16 +98,16 @@
                 </li>
                 <ul class="sub-menu collapse" id="new">
                     <div class="input-div">
-                        <select class="form-control menu-itm" id="vehiculo-sel" size="2" onChange="getTipovehiculo()">
                           <a href="#">
                               <i class="fa fa-user fa-lg"></i>
                               <input class="btn btn-secondary active" type="checkbox" checked autocomplete="of" id="vehicle-bici" onclick="toggleBici()"> Bici
                           </a>
+                          </br>
                           <a href="#">
                               <i class="fa fa-user fa-lg"></i>
                               <input class="btn btn-secondary active" type="checkbox" checked autocomplete="of" id="vehicle-moto" onclick="toggleMoto()"> Moto
                           </a>
-                        </select>
+                        
                     </div>
                 </ul>
                 <li>
@@ -95,9 +125,9 @@
             </ul>
         </div>
     </div>
-    <div class="container" id="main">
-        <div class="row">
-            <div class="col-md-12">
+    <div class="" id="main">
+        <div class="">
+            <div class="">
                 <div id="googleMap"></div>
             </div>
         </div>
