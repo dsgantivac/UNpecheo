@@ -1,95 +1,95 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <link rel="shortcut icon" href="./Resources/favicon.ico" />
-
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    
       <!-- Custom css -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/menu.css">
     <title> Rappi UNpecheo </title>
 </head>
 <body>
 <!-- -->
-<div class="nav-side-menu">
-    <div class="brand">Rappi APP </div>
-    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-    <div class="menu-list">
-        <ul id="menu-content" class="menu-content collapse out">
-            <li>
-                <a href="#">
-                    <i class="fa fa-dashboard fa-lg"></i> FILTROS
-                </a>
-            </li>
-
-            <li data-toggle="collapse" data-target="#geohash" class="collapsed">
-                <a href="#"><i class="fa fa-globe fa-lg"></i> Geohash <span class="arrow"></span></a>
-            </li>
-
-            <ul class="sub-menu collapse" id="geohash">
-                <div class="input-group">
-                  <input type="text" class="form-control" id="geohash-input" placeholder="Ingresa ubicación...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" id="geohash-btn"  onclick="getGeotext()">IR!</button>
-                  </span>
-                </div>
-            </ul>
-
-            <li data-toggle="collapse" data-target="#products" class="collapsed active">
-                <a href="#"><i class="fa fa-gift fa-lg"></i> Tipo de orden <span class="arrow"></span></a>
-            </li>
-            <ul class="sub-menu collapse" id="products">
-                <li class="active"><a href="#"></a></li>
-                <li><a href="#">Restaurante</a></li>
-                <li><a href="#">Mercados</a></li>
-                <li><a href="#">Rappicash</a></li>
-                <li><a href="#">Rappiventaja</a></li>
-                <li><a href="#">Antojo</a></li>
-            </ul>
-
-            <li data-toggle="collapse" data-target="#new" class="collapsed">
-                <a href="#"><i class="fa fa-car fa-lg"></i> Tipo de vehiculo <span class="arrow"></span></a>
-            </li>
-            <ul class="sub-menu collapse" id="new">
-                <li>Bici</li>
-                <li>Moto</li>
-            </ul>
-            <li>
-                <a href="#">
-                    <i class="fa fa-user fa-lg"></i>
-                    <div class="btn-group-toggle" data-toggle="buttons">
-                      <label class="btn btn-secondary active">
-                        <input type="checkbox" checked autocomplete="on" id="trafico-chk" onclick="toggleTrafico()"> Trafico
-                      </label>
+    <div class="nav-side-menu">
+        <div class="brand">Rappi APP </div>
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+        <div class="menu-list">
+            
+            <a href="#">
+                FILTROS
+            </a>
+            
+            <ul id="menu-content" class="menu-content collapse out">
+                
+    
+                <li data-toggle="collapse" data-target="#geohash" class="collapsed">
+                    <a href="#"><i class="fa fa-globe fa-lg"></i> Geohash <span class="arrow"></span></a>
+                </li>
+                
+                <ul class="sub-menu collapse" id="geohash">
+                    <div class="input-group input-div">
+                      <input type="text" class="form-control" id="geohash-input" placeholder="Ingresa ubicacion...">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="geohash-btn"  onclick="getGeotext()">IR!</button>
+                      </span>
                     </div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-users fa-lg"></i> Users
-                </a>
-            </li>
-        </ul>
+                </ul>
+    
+                <li data-toggle="collapse" data-target="#ordertype" class="collapsed">
+                    <a href="#"><i class="fa fa-gift fa-lg"></i> Tipo de orden <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="ordertype">
+                    <!--<li class="active"><a href="#"></a></li>-->
+                    <li><a href="#" data-val="rest" onClick="getTipoorden(this)">Restaurante</a></li>
+                    <li><a href="#" data-val="merc" onClick="getTipoorden(this)">Mercados</a></li>
+                    <li><a href="#" data-val="cash" onClick="getTipoorden(this)">Rappicash</a></li>
+                    <li><a href="#" data-val="vent" onClick="getTipoorden(this)">Rappiventaja</a></li>
+                    <li><a href="#" data-val="ant" onClick="getTipoorden(this)">Antojo</a></li>
+                </ul>
+                
+                <li data-toggle="collapse" data-target="#new" class="collapsed">
+                    <a href="#"><i class="fa fa-car fa-lg"></i> Tipo de vehiculo <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="new">
+                    <div class="input-div">
+                        <select class="form-control menu-itm" id="vehiculo-sel" size="2" onChange="getTipovehiculo()">
+                            <option>Bici</option>
+                            <option>Moto</option>
+                        </select>
+                    </div>
+                </ul>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-user fa-lg"></i> 
+                        <input class="btn btn-secondary active" type="checkbox" checked autocomplete="of" id="trafico-chk" onclick="toggleTrafico()"> Trafico
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-users fa-lg"></i> 
+                        <input class="btn btn-secondary active" type="checkbox" checked autocomplete="of" id="barrios-chk" onclick="toggleBarrios()"> Barrios
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
-<div class="container" id="main">
-    <div class="row">
-
-            <div id="googleMap"></div>
+    <div class="container" id="main">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="googleMap"></div>
+            </div>
+        </div>
     </div>
-</div>
-<!-- -->
-
-
+    
     <!-- Google maps API-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYZYRqUwPRnxKQ6cBp81DIq1w-MamF24U&libraries=geometry&libraries=places" async defer></script>
-
      <!-- custom script -->
-    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="app.js"></script> 
 
 </body>
 </html>

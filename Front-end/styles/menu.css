@@ -1,15 +1,10 @@
-#googleMap{
-    width:100%;
-    height:700px;
-}
 
-/**/
 .nav-side-menu {
   overflow: auto;
   font-family: verdana;
   font-size: 12px;
   font-weight: 200;
-  background-color: #2e353d;
+  background-color: #ff6f7a;
   position: fixed;
   top: 0px;
   width: 300px;
@@ -33,7 +28,7 @@
   margin: 0px;
   line-height: 35px;
   cursor: pointer;
-  /*
+  /*    
     .collapsed{
        .arrow:before{
                  font-family: FontAwesome;
@@ -154,3 +149,9 @@ body {
   margin: 0px;
   padding: 0px;
 }
+/**/
+.input-div {
+  padding: 10px;
+}
+
+
