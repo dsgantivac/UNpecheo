@@ -8,10 +8,6 @@ var app = express();
 var contain = require("@turf/boolean-contains");
 
 
-app.get('/orders/', function(req, res) {
-    Order.find()
-        .limit(10)
-
 app.get('/orders/:date/:date2', function(req, res) {
 
     Order.find(/*{ 
@@ -31,12 +27,19 @@ app.get('/orders/:date/:date2', function(req, res) {
             
             orders = orders.filter(function(order){           
                 if( t >= a && t <= d){
-
                     return true;
                 }
                 return false;
             })
-            res.json(orders);
+            var o = {}
+
+            for(var i=0; i<orders.length; i++){
+                if(!o[orders[i].type]){
+                    o[orders[i].type] = [];
+                }
+                o[orders[i].type].push(orders[i]);
+            }
+            res.json(o);
         });
 });
 
