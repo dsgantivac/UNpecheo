@@ -55,7 +55,7 @@ function mapPoints(points){
     arr.push(new google.maps.LatLng(points[i][0], points[i][1]));
 
   }
-  new arr;
+  return arr;
 
 }
 
