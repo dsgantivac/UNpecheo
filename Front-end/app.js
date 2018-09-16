@@ -14,12 +14,12 @@ test data
 var rtmarkers = []
 var ordersmarkers = []
 
-var rapitenderos = [[10,4.618258,-74.20226,1],[12,4.619329,-74.197598,0.8],[12,4.621649,-74.169974,2]]
-var orders = [[10,4.61574,-74.20326,1.2],[12,4.61129,-74.20008,1.5],[12,4.617629,-74.191974,1]]
+var rapitenderos = []
+var orders = []
 
 
 /*----*/
-function getInfo(){
+function getInfoord(){
   //var URL = 'http://10.105.168.90:4000/storekeeper/2018-09-10_22:00:00/2018-09-10_22:30:00'
 
   $.getJSON( "orders.json", function( json ) {
@@ -29,15 +29,18 @@ function getInfo(){
       orders.push([order.id,order.lat,order.lng,2])
     }
     console.log(orders)
+    addMarkersOrder()
   });
-  
+}
+function getInfort(){
   $.getJSON( "storekeeper.json", function( json ) {
     console.log( json);
     for (i = 0; i < 50; i++) {
       rt = json[i]
-      rapitenderos.push([rt.storekeepeer_id,parseFloat(rt.lat),parseFloat(rt.lng),2])
+      rapitenderos.push([rt.storekeepeer_id,rt.id,parseFloat(rt.lat),parseFloat(rt.lng),2])
     }
-    console.log(rapitenderos)
+    console.log("rts",rapitenderos)
+    addMarkersRT()
   });
 }
 
@@ -140,7 +143,7 @@ function myMap() {
     //Marcadores
     addMarkersOrder()
     addMarkersRT()
-    console.log("mark", ordersmarkers)
+    //console.log("mark", ordersmarkers)
   
 }
 
@@ -260,7 +263,8 @@ function addMarkersRT(){
 /*-----*/
 window.onload = function(){
   run();
-  getInfo();
+  getInfort();
+  getInfoord();
 }
 function run(){
   myMap();
