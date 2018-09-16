@@ -23,10 +23,8 @@ function getInfoord(){
   //var URL = 'http://10.105.168.90:4000/storekeeper/2018-09-10_22:00:00/2018-09-10_22:30:00'
 
   $.getJSON( "OrdersByType.json", function( json ) {
-    console.log("courie", json.courier);
     for (i = 0; i < json.courier.length; i++) {
       order = json.courier[i]
-      console.log("cour",json.courier[i])
       orders.push([order.id,order.lat,order.lng,order.toolkit.storekeeper_level*0.5,"courier"])
     }  
     for (i = 0; i < json.express.length; i++) {
@@ -75,7 +73,6 @@ var jqxhr = $.post( "", function() {
 
 function getGeotext(){
     var input = document.getElementById("geohash-input").value;
-    console.log
     $.ajax({
       url:'https://maps.googleapis.com/maps/api/geocode/json?address='+input+' Bogota,Colombia',
       dataType: 'json'
@@ -95,13 +92,25 @@ function getTipovehiculo(){
 }
 
 function getTipoorden(selection) {
-    var order = selection.getAttribute("data-val");
-    console.log("orden",order)
+    console.log("orden sel",selection)
+    var tipoorden =selection.getAttribute("id")
+    
+    if(tipoorden == 'Orden-Restaurante'){
+      for (i=0;i<ordersmarkers.length;i++){
+        if(ordersmarkers.category == 'restaurant' || category.length == 0)
+      {
+          ordersmarkers.setVisible(false);
+      }
+      }
+    }else if(tipoorden == 'Orden-Restaurante'){
+      
+    }
+    
 }
 
 function toggleTrafico() {
     var x = document.getElementById("trafico-chk");
-    console.log("togg",x.checked)
+    //console.log("togg",x.checked)
     if(trafico_chk){
       trafico_chk=false
       x.checked = false
@@ -191,10 +200,8 @@ function addBarrios(){
             bounds.push(path.toJSON());
           //  console.log(path)
           });
-          console.log(bounds);
-      
-     
-      console.log("geo",geo)
+          //console.log(bounds);
+      //console.log("geo",geo)
       infobarrios.setContent("<div style='width:150px; text-align: center;'>Barrio: "+barrio_name+"</div>");
       infobarrios.setPosition(event.latLng)
       infobarrios.setOptions({pixelOffset: new google.maps.Size(0,-30)});
@@ -204,7 +211,7 @@ function addBarrios(){
 }
 
 function addMarker(marker,image,listMarkers){  //Params: Information, icon image, markers location, saturation
-    var category = 'order category';
+    var category = marker[4];
     var title = 'order';
     var pos = new google.maps.LatLng(marker[1], marker[2]);
     var icon = {
@@ -240,16 +247,17 @@ function addMarker(marker,image,listMarkers){  //Params: Information, icon image
       map: map,
       center: pos,
       radius: sat*400,
-      title: title
+      title: title,
+      category: category,
     });
     
     var infoWindow= new google.maps.InfoWindow({
-        content: "orderinfowindow"
+        content: "Rapitendero"
         });
     
     //add a click event to the circle
     google.maps.event.addListener(circleOrder, 'click', function(){
-      infoWindow.setContent(circleOrder.title)
+      infoWindow.setContent("Orden")
       infoWindow.setPosition(circleOrder.getCenter());
       infoWindow.open(map);
     }); 
